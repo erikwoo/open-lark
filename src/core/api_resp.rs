@@ -52,6 +52,7 @@ pub enum ResponseFormat {
 #[derive(Serialize, Deserialize, Debug, Clone, Default)]
 pub struct RawResponse {
     pub code: i32,
+    #[serde(alias = "message")]
     pub msg: String,
     #[serde(rename = "error", default, skip_serializing_if = "Option::is_none")]
     pub err: Option<ErrorInfo>,

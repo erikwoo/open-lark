@@ -74,9 +74,11 @@ impl<T: ApiResponseTrait> Transport<T> {
         };
         match future.await {
             Ok(response) => {
+                println!("{:#?}", response);
                 match T::data_format() {
                     ResponseFormat::Data => {
                         let raw_body: Value = response.json().await?;
+                        println!("a: {:#?}", raw_body);
                         debug!("raw_body: {:?}", raw_body);
                         let base_resp = serde_json::from_value::<BaseResponse<T>>(raw_body)?;
                         Ok(base_resp)
@@ -84,6 +86,7 @@ impl<T: ApiResponseTrait> Transport<T> {
                     ResponseFormat::Flatten => {
                         let raw_body: Value = response.json().await?;
                         debug!("raw_body: {:?}", raw_body);
+                        println!("b: {:#?}", raw_body);
                         let raw_response = serde_json::from_value::<RawResponse>(raw_body.clone())?;
 
                         let data = if raw_response.code == 0 {

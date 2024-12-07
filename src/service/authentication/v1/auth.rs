@@ -50,20 +50,14 @@ pub struct UserInfo {
     pub avatar_big: String,
     /// 用户在应用内的唯一标识
     pub open_id: String,
-    /// 用户对ISV的唯一标识，对于同一个ISV，用户在其名下所有应用的union_id相同
-    pub union_id: String,
-    /// 用户邮箱
+    /// 用户对ISV的唯一
     pub email: Option<String>,
     /// 企业邮箱，请先确保已在管理后台启用飞书邮箱服务
     pub enterprise_email: Option<String>,
     /// 用户 user_id
-    pub user_id: String,
-    /// 用户手机号
-    pub mobile: Option<String>,
+    pub user_id: Option<String>,
     /// 当前企业标识
     pub tenant_key: String,
-    /// 用户工号
-    pub employee_no: String,
 }
 
 impl ApiResponseTrait for UserInfo {

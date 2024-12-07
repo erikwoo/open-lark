@@ -11,7 +11,7 @@ pub enum AppType {
 }
 
 pub const APP_ACCESS_TOKEN_INTERNAL_URL_PATH: &str = "/open-apis/auth/v3/app_access_token/internal";
-pub const APP_ACCESS_TOKEN_URL_PATH: &str = "/open-apis/auth/v3/app_access_token";
+//pub const APP_ACCESS_TOKEN_URL_PATH: &str = "/open-apis/auth/v3/app_access_token";
 pub const TENANT_ACCESS_TOKEN_INTERNAL_URL_PATH: &str =
     "/open-apis/auth/v3/tenant_access_token/internal";
 pub const TENANT_ACCESS_TOKEN_URL_PATH: &str = "/open-apis/auth/v3/tenant_access_token";

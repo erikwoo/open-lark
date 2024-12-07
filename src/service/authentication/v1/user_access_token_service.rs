@@ -6,7 +6,6 @@ use crate::core::http::Transport;
 use crate::core::req_option::RequestOption;
 use crate::core::SDKResult;
 use serde::Deserialize;
-use serde::Deserialize;
 use serde_json::json;
 
 pub struct UserAccessTokenService {
@@ -30,10 +29,13 @@ impl UserAccessTokenService {
             http_method: reqwest::Method::POST,
             api_path: "/open-apis/authen/v1/oidc/access_token".to_string(),
             body: json_bytes,
+            supported_access_token_types: vec![AccessTokenType::Tenant],
+
             ..Default::default()
         };
+        let option = RequestOption::builder().build();
 
-        let api_resp = Transport::request(api_req, &self.config, None).await?;
+        let api_resp = Transport::request(api_req, &self.config, Some(option)).await?;
 
         Ok(api_resp)
     }

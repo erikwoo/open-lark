@@ -38,8 +38,9 @@ impl ReqTranslator {
             .iter()
             .map(|(k, v)| (k.as_str(), v.as_str()))
             .collect::<Vec<_>>();
-        let url = Url::parse_with_params(&path, query_params)?;
-
+        // let url = Url::parse_with_params(&path, query_params)?;
+        let url = Url::parse(&path)?;
+        println!("{:#}", path);
         let mut req_builder = client.request(req.http_method.clone(), url.as_ref());
         // .send_bytes(&req.body);
         if !option.request_id.is_empty() {
